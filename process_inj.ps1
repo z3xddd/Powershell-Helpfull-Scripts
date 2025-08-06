@@ -1,7 +1,7 @@
 function getExplorer {
     Param ([String]$processName)
 
-    $query = "SELECT * FROM Win32_Process WHERE Name = '$processName'"
+    $query = "SELECT * FROM Win32_Process WHERE Name = '$processName' LIMIT 1"
     $process = Get-WmiObject -Query $query | Select-Object -First 1
     return $process.ProcessId
 }
